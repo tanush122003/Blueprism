@@ -1,0 +1,270 @@
+﻿<process name="exception handling" version="1.0" bpversion="7.3.0.9110" narrative="" byrefcollection="true" processrunningmessage="" disableversioning="false" type="object" runmode="Exclusive" preferredid="dfb250d9-1c1b-4d0b-b60a-2a0a511db7a6">
+  <appdef>
+    <element name="Application Root">
+      <id>2806531d-497c-4977-9416-42468044c163</id>
+      <type>Application</type>
+      <basetype>Application</basetype>
+      <datatype>unknown</datatype>
+      <diagnose>False</diagnose>
+    </element>
+  </appdef>
+  <view>
+    <camerax>0</camerax>
+    <cameray>0</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <subsheet subsheetid="e85ad54d-ab22-4e0d-90b3-2ba79b12a2bb" type="CleanUp" published="True">
+    <name>Clean Up</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="a061270b-49c7-4462-be53-3b092946580e" type="Normal" published="False">
+    <name>Action 1</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <subsheet subsheetid="bde67170-92cd-454a-87ef-0e39c65e4be3" type="Normal" published="True">
+    <name>Action 2</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <stage stageid="2280b8ba-4e1b-49ac-a57f-c0b76550c32a" name="Start" type="Start">
+    <loginhibit />
+    <display x="15" y="-105" />
+    <onsuccess>8bcbff7c-1e1c-410f-84c5-263542d86fd9</onsuccess>
+  </stage>
+  <stage stageid="8bcbff7c-1e1c-410f-84c5-263542d86fd9" name="End" type="End">
+    <loginhibit />
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="23664f76-6058-4c3f-a792-28706f069b42" name="Stage1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+    <references>
+      <reference>System.dll</reference>
+      <reference>System.Data.dll</reference>
+      <reference>System.Xml.dll</reference>
+      <reference>System.Drawing.dll</reference>
+    </references>
+    <imports>
+      <import>System</import>
+      <import>System.Drawing</import>
+      <import>System.Data</import>
+    </imports>
+    <language>visualbasic</language>
+    <globalcode><![CDATA[]]></globalcode>
+    <code><![CDATA[]]></code>
+  </stage>
+  <stage stageid="74b4b941-fe6b-4dfe-8384-683d34faa917" name="Clean Up" type="SubSheetInfo">
+    <subsheetid>e85ad54d-ab22-4e0d-90b3-2ba79b12a2bb</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="6b7606e0-11bb-401f-8b64-94fc22e18ca9" name="Start" type="Start">
+    <subsheetid>e85ad54d-ab22-4e0d-90b3-2ba79b12a2bb</subsheetid>
+    <loginhibit />
+    <display x="15" y="-105" />
+    <onsuccess>661cf610-339f-440a-bcd8-dcbafc1a1803</onsuccess>
+  </stage>
+  <stage stageid="661cf610-339f-440a-bcd8-dcbafc1a1803" name="End" type="End">
+    <subsheetid>e85ad54d-ab22-4e0d-90b3-2ba79b12a2bb</subsheetid>
+    <loginhibit />
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="51964eba-9f59-4c3f-a1da-0d88670b3a84" name="Action 1" type="SubSheetInfo">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="da6b79fa-b3d1-4e7c-b651-b2bb4d34de92" name="Start" type="Start">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="15" y="-105" />
+    <onsuccess>4c7bb229-1b13-44c2-b93b-30d78f25e399</onsuccess>
+  </stage>
+  <stage stageid="5addc563-7730-4d5d-8d93-e93356a94700" name="End" type="End">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="aad686e7-a55e-403c-aafa-8558d7983f24" name="" type="Note">
+    <subsheetid>e85ad54d-ab22-4e0d-90b3-2ba79b12a2bb</subsheetid>
+    <narrative>Clean Up Page
+
+This is an optional page where you might choose to perform some finalisation (or "cleanup") tasks as your business object is closed down.
+
+The cleanup action will be called automatically immediately after closing your business object at the end of a business process.
+
+You will not be able to call this action from a business process, nor will it be called at any other time than before the disposal of the business object.</narrative>
+    <display x="-180" y="60" w="180" h="230" />
+  </stage>
+  <stage stageid="f9a5c145-f94d-420e-b9d6-6c4789d12c89" name="" type="Note">
+    <narrative>Initialise Page
+
+This is an optional page where you might choose to perform some initialisation tasks after your business object is loaded.
+
+The initialise action will be called automatically immediately after loading your business object.
+
+You will not be able to call this action from a business process, nor will it be called at any other time than after the creation of the object.</narrative>
+    <display x="-180" y="60" w="180" h="230" />
+  </stage>
+  <stage stageid="fc403da7-09bc-44a5-864c-4812b33c7c31" name="race score 1" type="Data">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="-195" y="-15" />
+    <datatype>number</datatype>
+    <initialvalue>4</initialvalue>
+    <alwaysinit />
+  </stage>
+  <stage stageid="0cf72a2f-f99a-442f-8911-f98093cbea6e" name="race score 2" type="Data">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="-195" y="45" />
+    <datatype>number</datatype>
+    <initialvalue>5</initialvalue>
+    <alwaysinit />
+  </stage>
+  <stage stageid="8e927198-cf16-45e3-8e5d-28c182dc1bcf" name="total number of races" type="Data">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="-195" y="105" />
+    <datatype>number</datatype>
+    <initialvalue>0</initialvalue>
+    <alwaysinit />
+  </stage>
+  <stage stageid="d72200dc-b4c6-4363-8e36-ee6ecfd0fe3a" name="no error" type="Calculation">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="15" y="30" />
+    <onsuccess>5addc563-7730-4d5d-8d93-e93356a94700</onsuccess>
+    <calculation expression="([race score 1] + [race score 2])/[total number of races]" stage="average" />
+  </stage>
+  <stage stageid="5669ddc9-04dd-479f-8a30-30101863bfb3" name="average" type="Data">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="-105" y="15" />
+    <datatype>number</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="c57fda1c-866b-44d0-b9f3-38ac29e2a856" name="Recover1" type="Recover">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="210" y="-45" />
+    <onsuccess>4d95dcc1-b3ff-49c4-a067-5e369dec73a5</onsuccess>
+  </stage>
+  <stage stageid="6366930d-656b-498a-a5cb-843a33c29979" name="Resume1" type="Resume">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="210" y="75" />
+    <onsuccess>e98dfab7-5d96-498b-89d4-a5e541d947f7</onsuccess>
+  </stage>
+  <stage stageid="e98dfab7-5d96-498b-89d4-a5e541d947f7" name="End1" type="End">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="210" y="150" />
+  </stage>
+  <stage stageid="4c7bb229-1b13-44c2-b93b-30d78f25e399" name="race codition" type="Decision">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="15" y="-45" />
+    <decision expression="[total number of races] &gt; 0" />
+    <ontrue>d72200dc-b4c6-4363-8e36-ee6ecfd0fe3a</ontrue>
+    <onfalse>1c299834-a413-4118-8d08-00cf5b61752a</onfalse>
+  </stage>
+  <stage stageid="1c299834-a413-4118-8d08-00cf5b61752a" name="Exception1" type="Exception">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <display x="105" y="-45" />
+    <exception localized="yes" type="System Exception" detail="&quot;race value is 0 or less than 0&quot;" />
+  </stage>
+  <stage stageid="4d95dcc1-b3ff-49c4-a067-5e369dec73a5" name="Calc1" type="Calculation">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="210" y="15" />
+    <onsuccess>6366930d-656b-498a-a5cb-843a33c29979</onsuccess>
+    <calculation expression="ExceptionDetail()" stage="exception detail" />
+  </stage>
+  <stage stageid="0d6b0f36-067a-4878-8f77-439b6dbf6487" name="exception detail" type="Data">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="-300" y="45" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="b8173ad7-21cd-481e-ab77-0c24b25bf08d" name="Action 2" type="SubSheetInfo">
+    <subsheetid>bde67170-92cd-454a-87ef-0e39c65e4be3</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="bdc62c51-9934-4934-b6b2-63199cfffcbb" name="Start" type="Start">
+    <subsheetid>bde67170-92cd-454a-87ef-0e39c65e4be3</subsheetid>
+    <loginhibit />
+    <display x="120" y="-105" />
+    <onsuccess>34272360-24cf-4467-8142-bf4cf19a2d57</onsuccess>
+  </stage>
+  <stage stageid="c5d64872-3e03-4915-a9d1-e9cc0bce1c5f" name="End" type="End">
+    <subsheetid>bde67170-92cd-454a-87ef-0e39c65e4be3</subsheetid>
+    <loginhibit />
+    <display x="120" y="90" />
+  </stage>
+  <stage stageid="41adc18f-81b3-44bd-bd4b-d5707f37fc28" name="no error" type="Calculation">
+    <subsheetid>bde67170-92cd-454a-87ef-0e39c65e4be3</subsheetid>
+    <loginhibit />
+    <display x="120" y="30" />
+    <onsuccess>c5d64872-3e03-4915-a9d1-e9cc0bce1c5f</onsuccess>
+    <calculation expression="([race score 1] + [race score 2])/[total number of races]" stage="average" />
+  </stage>
+  <stage stageid="34272360-24cf-4467-8142-bf4cf19a2d57" name="race codition" type="Decision">
+    <subsheetid>bde67170-92cd-454a-87ef-0e39c65e4be3</subsheetid>
+    <loginhibit />
+    <display x="120" y="-45" />
+    <decision expression="[total number of races] &gt; 0" />
+    <ontrue>41adc18f-81b3-44bd-bd4b-d5707f37fc28</ontrue>
+    <onfalse>c91a1ab1-ca41-4032-9eaf-4c9675a20d7a</onfalse>
+  </stage>
+  <stage stageid="c91a1ab1-ca41-4032-9eaf-4c9675a20d7a" name="Exception1" type="Exception">
+    <subsheetid>bde67170-92cd-454a-87ef-0e39c65e4be3</subsheetid>
+    <display x="210" y="-45" />
+    <exception localized="yes" type="System Exception" detail="&quot;race value is 0 or less than 0&quot;" />
+  </stage>
+  <stage stageid="20977d73-25d1-43dd-840a-2e615b75c195" name="Block1" type="Block">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="165" y="-90" w="90" h="75" />
+    <font family="Segoe UI" size="10" style="Regular" color="7FB2E5" />
+  </stage>
+  <stage stageid="a05a9672-d1fe-4f85-9817-53bbb2daa5d0" name="Recover1" type="Recover">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="300" y="-45" />
+    <onsuccess>9761cc27-a44c-4053-a14f-7015a5d1c62b</onsuccess>
+  </stage>
+  <stage stageid="945fd6cc-a6d4-45d1-be6d-b5fb341c8f3d" name="Resume1" type="Resume">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="300" y="75" />
+    <onsuccess>8e2a6f4d-f0ed-4ef7-94c4-522716c7ad71</onsuccess>
+  </stage>
+  <stage stageid="8e2a6f4d-f0ed-4ef7-94c4-522716c7ad71" name="End1" type="End">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="300" y="150" />
+  </stage>
+  <stage stageid="9761cc27-a44c-4053-a14f-7015a5d1c62b" name="Calc1" type="Calculation">
+    <subsheetid>a061270b-49c7-4462-be53-3b092946580e</subsheetid>
+    <loginhibit />
+    <display x="300" y="15" />
+    <onsuccess>945fd6cc-a6d4-45d1-be6d-b5fb341c8f3d</onsuccess>
+    <calculation expression="ExceptionDetail()" stage="exception detail" />
+  </stage>
+</process>

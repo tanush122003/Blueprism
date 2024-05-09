@@ -1,0 +1,98 @@
+﻿<process name="error handling" version="1.0" bpversion="7.3.0.9110" narrative="" byrefcollection="true" processrunningmessage="" disableversioning="false" preferredid="5216c014-3bf3-4701-a41a-6b5ccf28058a">
+  <view>
+    <camerax>0</camerax>
+    <cameray>0</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <subsheet subsheetid="98797809-a9b5-483c-8914-87d2ad6cee6d" type="Normal" published="False">
+    <name>Page 1</name>
+    <view>
+      <camerax>0</camerax>
+      <cameray>0</cameray>
+      <zoom version="2">1.25</zoom>
+    </view>
+  </subsheet>
+  <stage stageid="93a1c108-5062-4662-9062-5014685e70ec" name="Start" type="Start">
+    <display x="15" y="-105" />
+    <onsuccess>272626ef-b776-4fcd-956f-337119654658</onsuccess>
+  </stage>
+  <stage stageid="31b3bf4a-ecc5-4abf-ad85-fb687c145b2d" name="End" type="End">
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="0500dc2b-e5e8-45e0-8420-056f2ca18e26" name="Stage1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="7c60408b-a9c8-4a36-b350-eed0b1ba90c6" name="Page 1" type="SubSheetInfo">
+    <subsheetid>98797809-a9b5-483c-8914-87d2ad6cee6d</subsheetid>
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="6d9aaabb-1577-4115-8c8b-a345afa086b3" name="Start" type="Start">
+    <subsheetid>98797809-a9b5-483c-8914-87d2ad6cee6d</subsheetid>
+    <display x="15" y="-75" />
+    <onsuccess>8d6f7b4a-60a0-4019-b74a-05fa36d49785</onsuccess>
+  </stage>
+  <stage stageid="44ab3e7c-73ad-4279-988b-b96305fa89dc" name="End" type="End">
+    <subsheetid>98797809-a9b5-483c-8914-87d2ad6cee6d</subsheetid>
+    <display x="15" y="90" />
+  </stage>
+  <stage stageid="272626ef-b776-4fcd-956f-337119654658" name="Page 1" type="SubSheet">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-15" />
+    <onsuccess>31b3bf4a-ecc5-4abf-ad85-fb687c145b2d</onsuccess>
+    <processid>98797809-a9b5-483c-8914-87d2ad6cee6d</processid>
+  </stage>
+  <stage stageid="8d6f7b4a-60a0-4019-b74a-05fa36d49785" name="exception handling::Action 2" type="Action">
+    <subsheetid>98797809-a9b5-483c-8914-87d2ad6cee6d</subsheetid>
+    <loginhibit onsuccess="true" />
+    <display x="15" y="0" />
+    <onsuccess>44ab3e7c-73ad-4279-988b-b96305fa89dc</onsuccess>
+    <resource object="exception handling" action="Action 2" />
+  </stage>
+  <stage stageid="a4b3f8d4-d87c-4ebf-b76a-25a0dde8dcf7" name="Recover1" type="Recover">
+    <subsheetid>98797809-a9b5-483c-8914-87d2ad6cee6d</subsheetid>
+    <loginhibit />
+    <display x="165" y="-105" />
+    <onsuccess>4fb2363f-c800-4aa5-8465-588baeb8a34e</onsuccess>
+  </stage>
+  <stage stageid="d758f673-20b6-47d0-bf77-1a7553d3f9e9" name="Resume1" type="Resume">
+    <subsheetid>98797809-a9b5-483c-8914-87d2ad6cee6d</subsheetid>
+    <loginhibit />
+    <display x="165" y="90" />
+    <onsuccess>4728984f-81ec-40ab-8104-2639f5309be9</onsuccess>
+  </stage>
+  <stage stageid="4728984f-81ec-40ab-8104-2639f5309be9" name="End1" type="End">
+    <subsheetid>98797809-a9b5-483c-8914-87d2ad6cee6d</subsheetid>
+    <loginhibit />
+    <display x="165" y="165" />
+  </stage>
+  <stage stageid="17a97c86-391f-49ef-9097-5125bec80297" name="Calc1" type="Calculation">
+    <subsheetid>98797809-a9b5-483c-8914-87d2ad6cee6d</subsheetid>
+    <loginhibit />
+    <display x="165" y="30" />
+    <onsuccess>d758f673-20b6-47d0-bf77-1a7553d3f9e9</onsuccess>
+    <calculation expression="ExceptionDetail()" stage="exception detail" />
+  </stage>
+  <stage stageid="4fb2363f-c800-4aa5-8465-588baeb8a34e" name="Decision1" type="Decision">
+    <subsheetid>98797809-a9b5-483c-8914-87d2ad6cee6d</subsheetid>
+    <display x="165" y="-45" />
+    <decision expression="InStr(ExceptionDetail(),&quot;number is less than 0&quot;) &gt; 0" />
+    <ontrue>06d12951-edec-4e9b-a797-3d0aaa440739</ontrue>
+    <onfalse>17a97c86-391f-49ef-9097-5125bec80297</onfalse>
+  </stage>
+  <stage stageid="06d12951-edec-4e9b-a797-3d0aaa440739" name="Exception1" type="Exception">
+    <subsheetid>98797809-a9b5-483c-8914-87d2ad6cee6d</subsheetid>
+    <display x="285" y="-45" />
+    <exception localized="yes" type="" detail="" usecurrent="yes" />
+  </stage>
+  <stage stageid="406db2f0-2b7a-47c5-8a13-6c15bf9bfae3" name="exception detail" type="Data">
+    <subsheetid>98797809-a9b5-483c-8914-87d2ad6cee6d</subsheetid>
+    <loginhibit />
+    <display x="-135" y="45" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+</process>
