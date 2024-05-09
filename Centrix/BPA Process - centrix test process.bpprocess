@@ -1,0 +1,57 @@
+﻿<process name="centrix test process" version="1.0" bpversion="7.3.0.9110" narrative="" byrefcollection="true" processrunningmessage="" disableversioning="false" preferredid="90c62758-d84a-4e0e-9f60-72c4250981e1">
+  <view>
+    <camerax>0</camerax>
+    <cameray>0</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <stage stageid="8d3939bd-9c97-421e-a84e-07bfd3e68ef7" name="Start" type="Start">
+    <display x="15" y="-105" />
+    <onsuccess>1786404d-59e7-44bc-8672-a07bd9531266</onsuccess>
+  </stage>
+  <stage stageid="f2c4f76a-9185-4289-89f1-d515fde016d2" name="End" type="End">
+    <display x="15" y="135" />
+  </stage>
+  <stage stageid="ba23da8a-3c78-44d3-9e04-489f77b6fc70" name="Stage1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="1786404d-59e7-44bc-8672-a07bd9531266" name="Launch" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="-45" />
+    <onsuccess>8dded680-ad46-4b4f-906e-373c30be3237</onsuccess>
+    <resource object="centrix" action="launch" />
+  </stage>
+  <stage stageid="8dded680-ad46-4b4f-906e-373c30be3237" name="Login" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="15" />
+    <inputs>
+      <input type="password" name="Password" friendlyname="Password" expr="[Password]" />
+      <input type="text" name="Staff Number" friendlyname="Staff Number" expr="[Staff Number]" />
+    </inputs>
+    <onsuccess>4f3cc26c-dcf2-4059-9abf-74a3d40417ef</onsuccess>
+    <resource object="centrix" action="login" />
+  </stage>
+  <stage stageid="4f3cc26c-dcf2-4059-9abf-74a3d40417ef" name="Close" type="Action">
+    <loginhibit onsuccess="true" />
+    <display x="15" y="75" />
+    <onsuccess>f2c4f76a-9185-4289-89f1-d515fde016d2</onsuccess>
+    <resource object="centrix" action="close" />
+  </stage>
+  <stage stageid="98f6cb3a-ec7a-4f68-9cbd-f02f0a324f26" name="Staff Number" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-195" y="15" w="120" h="60" />
+    <datatype>text</datatype>
+    <initialvalue xml:space="preserve">bp</initialvalue>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="a499d787-1a5e-407f-9a6f-cccb030ec3f4" name="Password" type="Data">
+    <loginhibit onsuccess="true" />
+    <display x="-195" y="90" w="120" h="60" />
+    <datatype>password</datatype>
+    <initialvalueenc>49,20,7,67,26,91,6,1</initialvalueenc>
+    <private />
+    <alwaysinit />
+  </stage>
+</process>
