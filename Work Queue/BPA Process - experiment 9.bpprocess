@@ -1,0 +1,79 @@
+﻿<process name="experiment 9" version="1.0" bpversion="7.3.0.9110" narrative="queues" byrefcollection="true" processrunningmessage="" disableversioning="false" preferredid="f15ea4b6-ce25-4320-86f3-3db5c18fdf3b">
+  <view>
+    <camerax>105</camerax>
+    <cameray>0</cameray>
+    <zoom version="2">1.25</zoom>
+  </view>
+  <preconditions />
+  <endpoint narrative="" />
+  <stage stageid="e9497c9e-81d5-43c9-961e-fc76246f142c" name="Start" type="Start">
+    <display x="15" y="-105" />
+    <onsuccess>0e140b2b-dd0c-46e9-8464-c7ffa3f08c25</onsuccess>
+  </stage>
+  <stage stageid="b45427c7-8142-4577-8ab1-d65a629d12a8" name="End" type="End">
+    <display x="120" y="15" />
+  </stage>
+  <stage stageid="cae2ac7f-df3a-4390-b9c0-6fa78d9f1665" name="Stage1" type="ProcessInfo">
+    <display x="-195" y="-105" w="150" h="90" />
+  </stage>
+  <stage stageid="0e140b2b-dd0c-46e9-8464-c7ffa3f08c25" name="Work Queues::Get Next Item" type="Action">
+    <narrative>This action gets the next item to be worked from the queue, returning its details and locking it so no other case can work it.
+
+Items with higher priorities (lower numerical value) are processed first. Where the priority is the same, the next item is the one that has been in the queue the longest,  is not already locked, and is not already completed.
+
+The Item ID returned is used to make further calls to update the work status for that item. It may be empty, in which case there are no items available. This can mean either a) the queue is empty, or b) the queue is not running. This mechanism can be used to cleanly stop all processes working a particular queue at the end of the next case. Items that have a 'deferred' time set will not be returned unless that time has been reached.</narrative>
+    <display x="15" y="-45" />
+    <inputs>
+      <input type="text" name="Queue Name" friendlyname="Queue Name" narrative="The name of the queue" expr="&quot;Queue1&quot;" />
+      <input type="text" name="Key Filter" friendlyname="Key Filter" narrative="Optionally, a key value to filter by. Only items with this key value will be considered." expr="" />
+      <input type="text" name="Tag Filter" friendlyname="Tag Filter" narrative="Optionally, a tag mask to filter by. This can consist of any number of tag searches - each term can be separated by a semi-colon and they are all applied to the search (ie. they are AND'ed terms not OR'ed terms). For example, &quot;Account: Joint; -Balance: Overdrawn; Card: *Visa*&quot; will include any items which match all the terms, ie. every item must have an 'Account: Joint' tag applied, no item can have a 'Balance: Overdrawn' tag applied, every item must have a tag applied which starts with 'Card: ' and then contains the text 'Visa'." expr="" />
+    </inputs>
+    <outputs>
+      <output type="text" name="Item ID" friendlyname="Item ID" narrative="The ID of the item retrieved - empty if there are none available." stage="Item ID" />
+      <output type="collection" name="Data" friendlyname="Data" narrative="The data associated with the item - a single collection row." stage="Data" />
+      <output type="text" name="Status" friendlyname="Status" narrative="The status of the item." stage="" />
+      <output type="number" name="Attempts" friendlyname="Attempts" narrative="The number of attempts already made to work this item." stage="" />
+    </outputs>
+    <onsuccess>1dc97f2f-3958-403b-baa6-cde9acb7b187</onsuccess>
+    <resource object="Blueprism.Automate.clsWorkQueuesActions" action="Get Next Item" />
+  </stage>
+  <stage stageid="187bd844-1f50-4189-8fdd-0ae4b3442052" name="Item ID" type="Data">
+    <display x="270" y="-90" w="120" h="60" />
+    <datatype>text</datatype>
+    <initialvalue />
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="4cf4e39d-5381-4437-88be-cf0720818b45" name="Data" type="Collection">
+    <display x="150" y="-90" w="90" h="60" />
+    <datatype>collection</datatype>
+    <private />
+    <alwaysinit />
+  </stage>
+  <stage stageid="1dc97f2f-3958-403b-baa6-cde9acb7b187" name="Decision1" type="Decision">
+    <display x="15" y="15" />
+    <decision expression="[Item ID]&lt;&gt;&quot;&quot;" />
+    <ontrue>35d55a51-a26a-4071-8de1-cb3436b16696</ontrue>
+    <onfalse>b45427c7-8142-4577-8ab1-d65a629d12a8</onfalse>
+  </stage>
+  <stage stageid="35d55a51-a26a-4071-8de1-cb3436b16696" name="Work Queues::Mark Completed" type="Action">
+    <loginhibit onsuccess="true" />
+    <narrative>Marks the item as completed, by updating the Completed timestamp and setting Locked to null. The item must be 'owned' by the calling process - i.e. it must have been retrieved using Get Next Item.</narrative>
+    <display x="15" y="75" />
+    <inputs>
+      <input type="text" name="Item ID" friendlyname="Item ID" narrative="The ID of the item to mark" expr="[Item ID]" />
+    </inputs>
+    <onsuccess>a804481b-959b-4ea7-addc-4fb6ba41c32c</onsuccess>
+    <resource object="Blueprism.Automate.clsWorkQueuesActions" action="Mark Completed" />
+  </stage>
+  <stage stageid="a804481b-959b-4ea7-addc-4fb6ba41c32c" name="Anchor1" type="Anchor">
+    <loginhibit onsuccess="true" />
+    <display x="-60" y="75" w="10" h="10" />
+    <onsuccess>b55a26d4-ee19-43b6-9ac3-850e46a2acf9</onsuccess>
+  </stage>
+  <stage stageid="b55a26d4-ee19-43b6-9ac3-850e46a2acf9" name="Anchor1" type="Anchor">
+    <loginhibit onsuccess="true" />
+    <display x="-60" y="-45" w="10" h="10" />
+    <onsuccess>0e140b2b-dd0c-46e9-8464-c7ffa3f08c25</onsuccess>
+  </stage>
+</process>
